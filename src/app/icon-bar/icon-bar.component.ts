@@ -13,4 +13,8 @@ export class IconBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  signOut() {
+    console.log('Sign out!')
+  }
+
 }

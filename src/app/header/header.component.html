@@ -1,4 +1,4 @@
-<mat-toolbar color="accent">
+<mat-toolbar *screenLarge color="accent">
   <mat-toolbar-row>
     <mat-icon
       class="example-icon"
@@ -7,7 +7,28 @@
       >favorite</mat-icon
     >
     <span>Car Sharing</span>
-    <span class="example-spacer"></span>
+    <span class="example-spacer"> </span>
+    <div>
+      <app-icon-bar></app-icon-bar>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
-<app-icon-bar></app-icon-bar>
+
+<mat-toolbar *screenSmall color="accent">
+  <mat-toolbar-row>
+      <mat-icon
+      class="example-icon"
+      aria-hidden="false"
+      aria-label="Example heart icon"
+      >favorite</mat-icon
+    >
+    <span>Car Sharing</span>
+    <span class="example-spacer"> </span>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
