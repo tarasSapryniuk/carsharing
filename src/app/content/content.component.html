@@ -1,1 +1,13 @@
-<p>content works!</p>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened
+    ><app-menu
+      *ngIf="
+        (menuService.isVertical && screenService.isLarge()) ||
+        (menuService.showVerticalMenu && screenService.isLarge())
+      " class="vertical-menu"
+    ></app-menu>
+  </mat-drawer>
+  <mat-drawer-content class="body-style">
+      <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
