@@ -18,13 +18,14 @@ export class ScreenSmallDirective {
   }
 
   onResize() {
-    this.screenLarge = false;
+    this.screenSmall = false;
   }
 
   @Input()
-  set screenLarge(condition) {
+  set screenSmall(condition) {
     condition =
       this.screenService.screenWidth < this.screenService.largePixels;
+      console.log(condition)
     if (condition && !this.hasView) {
       this.hasView = true;
       this.viewContainer.createEmbeddedView(this.template);
