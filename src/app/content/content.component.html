@@ -1,9 +1,9 @@
-<mat-drawer-container class="example-container">
+<mat-drawer-container>
   <mat-drawer mode="side" opened
     ><app-menu
       *ngIf="
         (menuService.isVertical && screenService.isLarge()) ||
-        (menuService.showVerticalMenu && screenService.isLarge())
+        (menuService.showVerticalMenu && !screenService.isLarge())
       " class="vertical-menu"
     ></app-menu>
   </mat-drawer>
