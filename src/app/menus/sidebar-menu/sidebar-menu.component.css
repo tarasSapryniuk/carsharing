@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  width: 100%;
+}
+span mat-icon {
+  margin-left: 40px;
+}
+.menu-list-item {
+  padding: 8px 0;
+  display: flex;
+  width: auto;
+}
+.menu-list-item .routeIcon {
+  margin-right: 40px;
+}

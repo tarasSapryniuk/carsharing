@@ -15,17 +15,19 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row *screenSmall>
-      <button mat-raised-button (click)='menuService.toggleMenu()'>Menu</button>
-        
-      <span class="example-spacer"> </span>
-      <mat-icon
-        class="example-icon"
-        aria-hidden="false"
-        aria-label="Example heart icon"
-        >favorite</mat-icon
-      >
-      <span>Car Sharing</span>
-    </mat-toolbar-row>
+    <button mat-mini-fab (click)="menuService.toggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="example-spacer"> </span>
+    <mat-icon
+      class="example-icon"
+      aria-hidden="false"
+      aria-label="Example heart icon"
+      >favorite</mat-icon
+    >
+    <span>Car Sharing</span>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <!-- [matMenuTriggerFor]="menu" -->
