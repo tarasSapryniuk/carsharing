@@ -14,25 +14,25 @@ export const AppMenuItems: Array<MenuItem> = [
           {
             text: "Ferrari",
             icon: "360",
-            route: "/ferrari",
+            route: "/car-detail/ferrari",
             submenu: null
           },
           {
             text: "Bugatti",
             icon: "360",
-            route: "/bugatti",
+            route: "/car-detail/bugatti",
             submenu: null
           },
           {
             text: "Lamburghini",
             icon: "360",
-            route: "/lamburghini",
+            route: "/car-detail/lamburghini",
             submenu: null
           },
           {
             text: "Maseratti",
             icon: "360",
-            route: "/maseratti",
+            route: "/car-detail/maseratti",
             submenu: null
           }
         ]
@@ -40,19 +40,19 @@ export const AppMenuItems: Array<MenuItem> = [
       {
         text: "Best one",
         icon: "directions_car",
-        route: "/1",
+        route: "/car-list/1",
         submenu: null
       },
       {
         text: "Top 3",
         icon: "directions_car",
-        route: "/3",
+        route: "/car-list/3",
         submenu: null
       },
       {
         text: "Top 5",
         icon: "directions_car",
-        route: "/5",
+        route: "/car-list/5",
         submenu: null
       }
     ]

@@ -1,6 +1,6 @@
 <mat-drawer-container>
-  <mat-drawer mode="side" opened>
-    <div
+  <mat-drawer #appDrawer mode="side" opened>
+    <div class="mat-sidenav"
       *ngIf="
         (menuService.isVertical && screenService.isLarge()) ||
         (menuService.showVerticalMenu && !screenService.isLarge())
@@ -10,17 +10,19 @@
         [item]="item"
         class="vertical-menu"
       ></app-sidebar-menu>
-      <div [ngClass]="menuService.isVertical ? 'dropup' : 'dropleft'">
-        <button
-          mat-icon-button
-          color="primary"
-          *ngIf="!menuService.showVerticalMenu"
-          (click)="menuService.toggleOrientation()"
-        >
-          <mat-icon>{{
-            !menuService.isVertical ? "keyboard_arrow_left" : "keyboard_arrow_up"
-          }}</mat-icon>
-        </button>
+      <div class="container">
+        <div [ngClass]="menuService.isVertical ? 'dropup' : 'dropleft'">
+          <button
+            mat-mini-fab
+            color="accent"
+            *ngIf="!menuService.showVerticalMenu"
+            (click)="menuService.toggleOrientation()"
+          >
+            <mat-icon>{{
+              !menuService.isVertical ? "keyboard_arrow_left" : "keyboard_arrow_up"
+            }}</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </mat-drawer>

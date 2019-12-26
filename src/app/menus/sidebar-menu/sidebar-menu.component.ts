@@ -8,7 +8,8 @@ import {
 } from "@angular/animations";
 import { Router } from "@angular/router";
 import { MenuItem, MenuService } from "../../services/menu.service";
-import { NavService } from '../../services/nav.service';
+import { NavService } from "../../services/nav.service";
+import { ScreenService } from "src/app/services/screen.service";
 
 @Component({
   selector: "app-sidebar-menu",
@@ -31,7 +32,12 @@ export class SidebarMenuComponent implements OnInit {
   @Input() item: MenuItem;
   @Input() depth: number;
 
-  constructor(public navService: NavService, private menuService: MenuService, public router: Router) {
+  constructor(
+    private navService: NavService,
+    private screenService: ScreenService,
+    private menuService: MenuService,
+    public router: Router
+  ) {
     if (this.depth === undefined) {
       this.depth = 1;
     }
@@ -51,7 +57,12 @@ export class SidebarMenuComponent implements OnInit {
   onItemSelected(item: MenuItem) {
     if (!item.submenu || !item.submenu.length) {
       this.router.navigate([item.route]);
-      this.navService.closeNav();
+      if (this.screenService.isSmall()) {
+        // console.log(this.navService.appDrawer)
+        // debugger;
+        // Close Sidebar after select item
+        this.menuService.toggleMenu();
+      }
     }
     if (item.submenu && item.submenu.length) {
       this.expanded = !this.expanded;
