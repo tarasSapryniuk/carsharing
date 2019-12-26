@@ -61,7 +61,9 @@ export class SidebarMenuComponent implements OnInit {
         // console.log(this.navService.appDrawer)
         // debugger;
         // Close Sidebar after select item
-        this.menuService.toggleMenu();
+        this.navService.closeNav();
+        // this.menuService.toggleMenu();
+
       }
     }
     if (item.submenu && item.submenu.length) {

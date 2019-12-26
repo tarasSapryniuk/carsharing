@@ -26,7 +26,7 @@
     mat-icon-button
     color="primary"
     *ngIf="!menuService.showVerticalMenu"
-    (click)="menuService.toggleOrientation()"
+    (click)="menuService.toggleOrientation(); navService.openNav();"
   >
     <mat-icon>{{
       !menuService.isVertical ? "keyboard_arrow_left" : "keyboard_arrow_up"

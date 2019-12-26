@@ -3,6 +3,7 @@ span mat-icon {
 }
 :host {
   display: flex;
+  flex: 1;
   flex-direction: column;
   outline: none;
   width: 100%;
