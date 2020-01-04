@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import {
-  AppConfigService,
-  AppConfigSettings
-} from "./services/app-config.service";
+  SpaConfigService,
+  SpaConfigSettings
+} from "../spa/services/spa-config.service";
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
 import { of, from } from "rxjs";
 import { map } from "rxjs/operators";
-import { MenuService } from './services/menu.service';
+import { MenuService } from '../spa/services/menu.service';
 import { AppMenuItems } from './app.menu'
 
 @Component({
@@ -18,7 +18,7 @@ import { AppMenuItems } from './app.menu'
 export class AppComponent {
   title = "carsharing";
   constructor(
-    private appConfigService: AppConfigService,
+    private spaConfigService: SpaConfigService,
     private matIconRegistry: MatIconRegistry,
     private menuService: MenuService,
     private domSanitizer: DomSanitizer
@@ -28,7 +28,7 @@ export class AppComponent {
     this.addSvgIcon("snapchat");
     this.addSvgIcon("whatsapp");
 
-    const config: AppConfigSettings = {
+    const config: SpaConfigSettings = {
       socialIcons: [
         { name: "facebook", alt: "Facebook", url: "https://facebook.com/" },
         { name: "instagram", alt: "Instagram", url: "https://facebook.com/" },
@@ -38,7 +38,7 @@ export class AppComponent {
       showUserControl: true
     };
 
-    appConfigService.configure(config);
+    spaConfigService.configure(config);
     menuService.items = AppMenuItems;
   }
 

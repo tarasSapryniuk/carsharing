@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-shrink: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.body-style {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 5vw;
+  flex-grow: 1;
+  width: 100vw;
+}
+
+.dropup {
+  margin: 16px;
+}
+
+mat-drawer div {
+  padding: 8px 0;
+}
+
+.small-display {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+  
+}

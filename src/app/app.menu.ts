@@ -1,38 +1,38 @@
-import { MenuItem } from "../app/services/menu.service";
+import { MenuItem } from "../spa/services/menu.service";
 
 export const AppMenuItems: Array<MenuItem> = [
   {
     text: "Cars",
     icon: "directions_car",
-    route: "/cars",
+    route: "/authenticated/cars",
     submenu: [
       {
         text: "Select",
         icon: "mouse",
-        route: "/cars",
+        route: "/authenticated/cars",
         submenu: [
           {
             text: "Ferrari",
             icon: "360",
-            route: "/car-detail/ferrari",
+            route: "/authenticated/car-detail/ferrari",
             submenu: null
           },
           {
             text: "Bugatti",
             icon: "360",
-            route: "/car-detail/bugatti",
+            route: "/authenticated/car-detail/bugatti",
             submenu: null
           },
           {
             text: "Lamburghini",
             icon: "360",
-            route: "/car-detail/lamburghini",
+            route: "/authenticated/car-detail/lamburghini",
             submenu: null
           },
           {
             text: "Maseratti",
             icon: "360",
-            route: "/car-detail/maseratti",
+            route: "/authenticated/car-detail/maseratti",
             submenu: null
           }
         ]
@@ -40,19 +40,19 @@ export const AppMenuItems: Array<MenuItem> = [
       {
         text: "Best one",
         icon: "directions_car",
-        route: "/car-list/1",
+        route: "/authenticated/car-list/1",
         submenu: null
       },
       {
         text: "Top 3",
         icon: "directions_car",
-        route: "/car-list/3",
+        route: "/authenticated/car-list/3",
         submenu: null
       },
       {
         text: "Top 5",
         icon: "directions_car",
-        route: "/car-list/5",
+        route: "/authenticated/car-list/5",
         submenu: null
       }
     ]
@@ -65,13 +65,13 @@ export const AppMenuItems: Array<MenuItem> = [
       {
         text: "Car maint",
         icon: "local_car_wash",
-        route: "/car-maint",
+        route: "/authenticated/car-maint",
         submenu: null
       },
       {
         text: "Settings",
         icon: "settings",
-        route: "/settings",
+        route: "/authenticated/settings",
         submenu: null
       }
     ]
@@ -79,7 +79,7 @@ export const AppMenuItems: Array<MenuItem> = [
   {
     text: "Home",
     icon: "home",
-    route: "/home",
+    route: "/authenticated/home",
     submenu: null
   }
 ];
