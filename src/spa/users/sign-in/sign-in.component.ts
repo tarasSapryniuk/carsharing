@@ -32,7 +32,6 @@ export class SignInComponent implements OnInit {
         .signIn(signInForm.value.username, signInForm.value.password)
         .subscribe(
           data => {
-            console.log(data);
             this.router.navigate(["/authenticated"]);
           },
           error => {
