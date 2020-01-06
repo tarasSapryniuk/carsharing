@@ -1,0 +1,133 @@
+:host {
+  width: 90vw;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25vw;
+  padding-right: 0.5rem !important;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+  cursor: pointer;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: #777;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.large-detail {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.small-detail {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+}
+
+.large-element-image {
+  background-size: cover;
+  width: 30vw;
+}
+
+.small-element-image {
+  background-size: cover;
+  width: 100%;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.large-element-image {
+  margin: 1rem;
+}
+
+.characteristicL div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 33%;
+  margin-top: 1.2vw;
+}
+
+.characteristicS div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 20px;
+  width: 34vw;
+  margin-top: 2.5vh;
+}
+
+.characteristicS div > * {
+  margin: 0.2rem;
+}
+
+.characteristicL div > * {
+  margin: 0.5rem;
+}
+
+.titleL {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.titleS {
+  font-size: 1.8rem;
+  font-weight: 500;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* overflow-x: none; */
+}
+
+
+.characteristicL, .characteristicS{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.characteristicS {
+  margin-bottom: 30px;
+}
+
+
+/* .mat-icon {
+  width: 20px !important;
+  height: 20px !important;
+} */

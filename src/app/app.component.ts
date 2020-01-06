@@ -19,14 +19,12 @@ export class AppComponent {
   title = "carsharing";
   constructor(
     private spaConfigService: SpaConfigService,
-    private matIconRegistry: MatIconRegistry,
     private menuService: MenuService,
-    private domSanitizer: DomSanitizer
   ) {
-    this.addSvgIcon("facebook");
-    this.addSvgIcon("instagram");
-    this.addSvgIcon("snapchat");
-    this.addSvgIcon("whatsapp");
+    this.spaConfigService.addSvgIcon("facebook");
+    this.spaConfigService.addSvgIcon("instagram");
+    this.spaConfigService.addSvgIcon("snapchat");
+    this.spaConfigService.addSvgIcon("whatsapp");
 
     const config: SpaConfigSettings = {
       socialIcons: [
@@ -42,15 +40,5 @@ export class AppComponent {
     menuService.items = AppMenuItems;
   }
 
-  addSvgIcon(iconName) {
-    // this.appConfigService.getSvgFile(`../assets/svg/${iconName}.svg`).subscribe(element => {
-    //   console.log(element);
-    this.matIconRegistry.addSvgIcon(
-      iconName,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(
-        `../assets/svg/${iconName}.svg`
-      )
-    );
-    // });
-  }
+  
 }

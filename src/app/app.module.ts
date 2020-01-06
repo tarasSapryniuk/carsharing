@@ -16,6 +16,10 @@ import { SpaModule } from "../spa/spa.module";
 import { UserApi } from "src/spa/users/users-api";
 import { AuthGuard } from "./services/auth-guard.service";
 import { AppMenuItems } from './app.menu';
+import { AppDataService } from './services/app-data.service';
+import { CdkTableModule } from '@angular/cdk/table';
+import { AngularMaterialModule } from './angular-material.module';
+
 
 @NgModule({
   declarations: [
@@ -27,14 +31,15 @@ import { AppMenuItems } from './app.menu';
     CarListComponent,
     AuthenticatedComponent
   ],
-  imports: [BrowserModule, SpaModule, AppRoutingModule],
+  imports: [BrowserModule, SpaModule, AppRoutingModule, CdkTableModule, AngularMaterialModule],
   providers: [
     UserService,
     {
       provide: UserApi,
       useExisting: UserService
     },
-    AuthGuard
+    AuthGuard,
+    AppDataService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

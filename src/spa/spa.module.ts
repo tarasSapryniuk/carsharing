@@ -53,7 +53,7 @@ import { SidebarMenuComponent } from './menus/sidebar-menu/sidebar-menu.componen
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  exports: [ BodyComponent ],
+  exports: [ BodyComponent, FooterComponent ],
   providers: [SpaConfigService, ScreenService, MenuService, NavService, AlertService],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
