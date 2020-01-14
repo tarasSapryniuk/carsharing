@@ -1,0 +1,56 @@
+<h3>
+  <div [ngSwitch]="operation">
+    <div *ngSwitchCase="'details'">Reading panel</div>
+    <div *ngSwitchCase="'create'">Adding panel</div>
+    <div *ngSwitchCase="'edit'">Editing panel</div>
+  </div>
+</h3>
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <mat-card class="flex-container">
+      <mat-header>
+        <div *ngFor="let field of vmDefinition">
+          <spa-dynamic-field
+            *ngIf="field.type === 'image'"
+            [field]="field"
+            [form]="form"
+            [operation]="operation"
+            [submitted]="submitted"
+          ></spa-dynamic-field>
+        </div>
+      </mat-header>
+      <mat-content>
+        <div *ngFor="let field of vmDefinition">
+          <spa-dynamic-field
+            *ngIf="field.type != 'image'"
+            [field]="field"
+            [form]="form"
+            [operation]="operation"
+            [submitted]="submitted"
+          ></spa-dynamic-field>
+        </div>
+      </mat-content>
+    </mat-card>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    <mat-card-actions *ngIf="status != 'waiting'">
+      <div *ngIf="operation === 'details'">
+        <button mat-button (click)="onBack()">Go back</button>
+        <button mat-button (click)="onEdit()">Edit</button>
+      </div>
+      <div *ngIf="operation === 'edit'">
+        <button mat-button (click)="onCancel()">Cancel</button>
+        <button mat-button (click)="onSave()">Save</button>
+      </div>
+      <div *ngIf="operation === 'create'">
+        <button mat-button (click)="onBack()">Go back</button>
+        <button mat-button (click)="onCreate()">Create</button>
+      </div>
+    </mat-card-actions>
+    <div *ngIf="status === 'waiting'">
+      Waiting...
+    </div>
+  </form>
+</div>

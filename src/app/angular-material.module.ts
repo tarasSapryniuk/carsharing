@@ -23,7 +23,7 @@ import {
   MatProgressSpinnerModule,
   MatSortModule
 } from "@angular/material";
-
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 @NgModule({
   imports: [
     CommonModule,
@@ -47,7 +47,8 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule,
+    MatCarouselModule
   ],
   exports: [
     MatCheckboxModule,
@@ -70,7 +71,8 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule,
+    MatCarouselModule
   ],
   providers: [MatDatepickerModule]
 })

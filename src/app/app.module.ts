@@ -10,6 +10,7 @@ import { CarDetailComponent } from "./routes/car-detail/car-detail.component";
 import { CarMaintComponent } from "./routes/car-maint/car-maint.component";
 import { CarListComponent } from "./routes/car-list/car-list.component";
 import { AuthenticatedComponent } from "./routes/authenticated/authenticated.component";
+import { ChartsModule } from 'ng2-charts';
 
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { SpaModule } from "../spa/spa.module";
@@ -19,6 +20,9 @@ import { AppMenuItems } from './app.menu';
 import { AppDataService } from './services/app-data.service';
 import { CdkTableModule } from '@angular/cdk/table';
 import { AngularMaterialModule } from './angular-material.module';
+import { CarCarouselComponent } from './routes/car-maint/car-carousel/car-carousel.component';
+import { ChartService } from './services/chart.service';
+import { BarChartComponent } from './routes/car-maint/bar-chart/bar-chart.component';
 
 
 @NgModule({
@@ -28,10 +32,12 @@ import { AngularMaterialModule } from './angular-material.module';
     SettingsComponent,
     CarDetailComponent,
     CarMaintComponent,
+    CarCarouselComponent,
+    BarChartComponent,
     CarListComponent,
     AuthenticatedComponent
   ],
-  imports: [BrowserModule, SpaModule, AppRoutingModule, CdkTableModule, AngularMaterialModule],
+  imports: [BrowserModule, SpaModule, AppRoutingModule, CdkTableModule, AngularMaterialModule, ChartsModule],
   providers: [
     UserService,
     {
@@ -39,7 +45,8 @@ import { AngularMaterialModule } from './angular-material.module';
       useExisting: UserService
     },
     AuthGuard,
-    AppDataService
+    AppDataService,
+    ChartService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

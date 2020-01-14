@@ -14,6 +14,7 @@ import {
 import { SpaConfigService } from "src/spa/services/spa-config.service";
 import { ScreenService } from "src/spa/services/screen.service";
 import { SelectionModel } from "@angular/cdk/collections";
+
 @Component({
   selector: "app-car-maint",
   templateUrl: "./car-maint.component.html",
@@ -42,12 +43,19 @@ export class CarMaintComponent implements OnInit {
 
   displayedColumns: string[] = ["select", "id", "name", "model", "price"];
   icons: string[] = [
+    "battery",
     "car",
     "car-oil",
+    "car-engine",
+    "sports-car",
     "shifter",
     "calendar",
     "car-seat",
-    "painted-car"
+    "jeep",
+    "painted-car",
+    "price",
+    "location",
+    "van"
   ];
 
   dataSource: MatTableDataSource<Car>;
@@ -98,5 +106,42 @@ export class CarMaintComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  createCar() {
+    this.router.navigate(["/authenticated/car-detail", 0, "create"]);
+  }
+  showCarDetail(id: number) {
+    this.router.navigate(["/authenticated/car-detail", id, "details"]);
+  }
+  editCar(id: number) {
+    this.router.navigate(["/authenticated/car-detail", id, "edit"]);
+  }
+  deleteCarQuestion(id: number) {
+    this.deleteError = null;
+    this.deleteId = id;
+  }
+  cancelDelete() {
+    this.isDeleting = false;
+    this.deleteId = null;
+  }
+  deleteCar(id: number) {
+    this.isDeleting = true;
+    this.appDataService.deleteCar(id).subscribe(
+      car => {
+        this.cancelDelete();
+        this.router
+          .navigateByUrl("/authenticated", {
+            skipLocationChange: true
+          })
+          .then(() => {
+            this.router.navigate(["/authenticated/car-maint"]);
+          });
+      },
+      error => {
+        this.deleteError = error;
+        this.isDeleting = false;
+      }
+    );
   }
 }

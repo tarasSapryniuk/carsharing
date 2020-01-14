@@ -1,0 +1,48 @@
+<div [hidden]="operation === 'create' && field.isId" [formGroup]="form">
+  <div [ngSwitch]="field.type">
+    <div *ngSwitchCase="'string'">
+      <mat-form-field>
+        <input
+          matInput
+          autocomplete="off"
+          [formControlName]="field.key"
+          [id]="field.key"
+          [readonly]="operation === 'details' || field.isId"
+          [placeholder]="field.label"
+        />
+      </mat-form-field>
+    </div>
+    <div *ngSwitchCase="'number'">
+      <mat-form-field>
+        <input
+          matInput
+          autocomplete="off"
+          [formControlName]="field.key"
+          [id]="field.key"
+          [readonly]="operation === 'details' || field.isId"
+          type="number"
+          [placeholder]="field.label"
+        />
+      </mat-form-field>
+    </div>
+    <div *ngSwitchCase="'image'">
+      <div class="imagePreview" *ngIf="imageURL || form.value.image">
+        <img class="image" [src]="imageURL && imageURL !== '' ? imageURL : form.value.image" />
+      </div>
+      <input
+      type="file"
+      accept="image/*"
+      [readonly]="operation === 'details' || field.isId"
+      (change)="showPreview($event)"
+    />
+    </div>
+  </div>
+  <div
+    *ngIf="
+      form.get(field.key).hasError('required') &&
+      (submitted || form.get(field.key).touched)
+    "
+  >
+    {{ field.label }} is required
+  </div>
+</div>

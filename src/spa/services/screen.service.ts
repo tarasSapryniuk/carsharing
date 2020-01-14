@@ -8,7 +8,7 @@ export class ScreenService {
   private resizeSource = new Subject<null>();
   public resize$ = this.resizeSource.asObservable();
 
-  largePixels = 780;
+  largePixels = 850;
   screenWidth: number;
   screenHeight: number;
 

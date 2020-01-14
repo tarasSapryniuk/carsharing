@@ -1,0 +1,14 @@
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80vw;
+}
+
+mat-header {
+  width: 50vw;
+}
+
+mat-content {
+  width: 30vw;
+}

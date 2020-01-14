@@ -5,7 +5,7 @@ export interface Car {
     date: number;
     type: string;
     numb_seats: number;
-    engine: {
+    engine?: {
         fuel_type: string;
         transmission: string;
         cubic_capacity: number;
@@ -14,5 +14,6 @@ export interface Car {
     image: string;
     location: string;
     ext_color: string;
+    orders: number;
     /* description: string; */
 }

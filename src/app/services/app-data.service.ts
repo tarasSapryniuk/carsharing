@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { UserService } from "./user.service";
 import { Car } from "./car-interface";
 import { Observable, of, throwError } from "rxjs";
-import { delay, catchError } from "rxjs/operators";
+import { delay, catchError, map } from "rxjs/operators";
 
 @Injectable()
 export class AppDataService {
@@ -21,8 +21,9 @@ export class AppDataService {
       },
       price: 11000,
       image: "assets/cars/camry2010.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 20 
     },
     {
       id: 2,
@@ -38,8 +39,9 @@ export class AppDataService {
       },
       price: 10400,
       image: "assets/cars/accord-coupe2010.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 9 
     },
     {
       id: 3,
@@ -56,8 +58,9 @@ export class AppDataService {
       },
       price: 12600,
       image: "assets/cars/AudiA62010.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 11 
     },
     {
       id: 4,
@@ -74,8 +77,9 @@ export class AppDataService {
       },
       price: 12600,
       image: "assets/cars/bmw535i2010.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 13 
     },
     {
       id: 5,
@@ -85,14 +89,15 @@ export class AppDataService {
       type: "Saloon",
       numb_seats: 5,
       engine: {
-        fuel_type: "Petrol",
+        fuel_type: "Diesel",
         transmission: "Automatic",
         cubic_capacity: 3200
       },
       price: 14000,
       image: "assets/cars/mercw2112009.png",
-      location: "Lviv",
-      ext_color: "silver"
+      location: "Lviv, Ukraine",
+      ext_color: "silver",
+      orders: 10 
     },
     {
       id: 6,
@@ -108,8 +113,9 @@ export class AppDataService {
       },
       price: 22900,
       image: "assets/cars/touareg2013.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 6 
     },
     {
       id: 7,
@@ -126,8 +132,9 @@ export class AppDataService {
       },
       price: 25000,
       image: "assets/cars/tesla2015.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 18 
     },
     {
       id: 8,
@@ -144,8 +151,9 @@ export class AppDataService {
       },
       price: 14500,
       image: "assets/cars/infinitig37.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 4 
     },
     {
       id: 9,
@@ -162,8 +170,9 @@ export class AppDataService {
       },
       price: 7500,
       image: "assets/cars/grandeur2009.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 6 
     },
     {
       id: 10,
@@ -180,8 +189,9 @@ export class AppDataService {
       },
       price: 75000,
       image: "assets/cars/gt-r35.png",
-      location: "Kyiv",
-      ext_color: "White Mettalic"
+      location: "Kyiv, Ukraine",
+      ext_color: "White Mettalic",
+      orders: 1 
     },
     {
       id: 11,
@@ -198,8 +208,9 @@ export class AppDataService {
       },
       price: 22000,
       image: "assets/cars/370z.png",
-      location: "Kyiv",
-      ext_color: "White Mettalic"
+      location: "Kyiv, Ukraine",
+      ext_color: "White Mettalic",
+      orders: 2 
     },
     {
       id: 12,
@@ -216,15 +227,16 @@ export class AppDataService {
       },
       price: 11200,
       image: "assets/cars/leaf.png",
-      location: "Lviv",
-      ext_color: "White Mettalic"
+      location: "Lviv, Ukraine",
+      ext_color: "White Mettalic",
+      orders: 15 
     },
     {
       id: 13,
       name: "Volkswagen",
       model: "Passat B8",
       date: 2018,
-      type: "Coupe",
+      type: "Saloon",
       numb_seats: 5,
       engine: {
         fuel_type: "Patrol",
@@ -234,8 +246,9 @@ export class AppDataService {
       },
       price: 19500,
       image: "assets/cars/passatb8.png",
-      location: "Lviv",
-      ext_color: "Milano Red"
+      location: "Lviv, Ukraine",
+      ext_color: "Milano Red",
+      orders: 9 
     },
     {
       id: 14,
@@ -252,8 +265,9 @@ export class AppDataService {
       },
       price: 4500,
       image: "assets/cars/golf-IV.png",
-      location: "Lviv",
-      ext_color: "Red"
+      location: "Lviv, Ukraine",
+      ext_color: "Red",
+      orders: 16 
     },
     {
       id: 15,
@@ -270,8 +284,9 @@ export class AppDataService {
       },
       price: 10600,
       image: "assets/cars/Audi-A42010.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 6 
     },
     {
       id: 16,
@@ -288,8 +303,9 @@ export class AppDataService {
       },
       price: 9800,
       image: "assets/cars/trafic.png",
-      location: "Lviv",
-      ext_color: "Silver"
+      location: "Lviv, Ukraine",
+      ext_color: "Silver",
+      orders: 5 
     }
   ];
 
@@ -302,5 +318,16 @@ export class AppDataService {
   getCar(id: number): Observable<Car> {
     const car = this.CarsColection.find(item => item.id === id);
     return of(car);
+  }
+  deleteCar(id: number): Observable<any> {
+    return of({}).pipe(
+      delay(2000),
+      map(() =>
+        this.CarsColection.splice(
+          this.CarsColection.findIndex(item => item.id === id),
+          1
+        ) 
+      )
+    );
   }
 }

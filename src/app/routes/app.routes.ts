@@ -25,7 +25,7 @@ export const appRoutes: Routes = [
           // { path: "", canActivateChild: [AuthGuard],children: [
             { path: "home", component: HomeComponent },
             { path: "settings", component: SettingsComponent },
-            { path: "car-detail/:car", component: CarDetailComponent },
+            { path: "car-detail/:id/:operation", component: CarDetailComponent },
             { path: "car-list/:count", component: CarListComponent },
             { path: "car-maint", component: CarMaintComponent }
           // ]}
