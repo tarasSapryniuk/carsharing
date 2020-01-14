@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container [ngClass]="screenService.isLarge()? 'container' : 'container-fluid'">
   <mat-sidenav
     #appDrawer
     [mode]="screenService.isLarge() ? 'side' : 'push'"
@@ -37,7 +37,7 @@
         </a>
       </div>
 
-      <div class="container" *screenLarge>
+      <div *screenLarge>
         <div [ngClass]="menuService.isVertical ? 'dropup' : 'dropleft'">
           <button
             mat-mini-fab
@@ -56,9 +56,9 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content >
-    <div class="body-style">
+    <div [ngClass]="screenService.isLarge() && !menuService.isVertical ? 'body-style' : 'body-style-small'">
       <router-outlet></router-outlet>
     </div>
-    <!-- <spa-footer></spa-footer> -->
+    <spa-footer></spa-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

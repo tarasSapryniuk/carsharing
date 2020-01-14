@@ -1,4 +1,4 @@
-<mat-toolbar color="accent">
+<mat-toolbar [ngClass]="!menuService.isVertical && screenService.isLarge() ?'container':'container-fluid'">
   <mat-toolbar-row *screenLarge>
     <mat-icon
       class="example-icon"
@@ -9,13 +9,11 @@
     <span>Car Sharing</span>
     <spa-menu *ngIf="!menuService.isVertical"></spa-menu>
     <span class="example-spacer"> </span>
-    <div>
-      <spa-icon-bar></spa-icon-bar>
-    </div>
+    <spa-nav-profile></spa-nav-profile>
   </mat-toolbar-row>
 
   <mat-toolbar-row *screenSmall>
-    <button mat-mini-fab (click)="navService.openNav(); ">
+    <button mat-icon-button (click)="navService.openNav(); ">
       <mat-icon>menu</mat-icon>
     </button>
 

@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { ScreenService } from "../services/screen.service";
+import { MenuService } from '../services/menu.service';
 
 @Component({
-  selector: 'spa-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  selector: "spa-footer",
+  templateUrl: "./footer.component.html",
+  styleUrls: ["./footer.component.css"]
 })
 export class FooterComponent implements OnInit {
-
-  title: string = 'All rights reserved';
+  title: string = "All rights reserved";
   year = new Date().getFullYear();
-  constructor() { }
+  constructor(
+    private screenService: ScreenService,
+    private menuService: MenuService
+  ) {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
