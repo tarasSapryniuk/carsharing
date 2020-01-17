@@ -29,7 +29,7 @@ export class CarDetailComponent implements OnInit {
     },
     {
       key: "price",
-      type: "number",
+      type: "amount",
       isId: false,
       label: "Car price value",
       required: true
@@ -52,14 +52,45 @@ export class CarDetailComponent implements OnInit {
       key: "numb_seats",
       type: "number",
       isId: false,
-      label: "numb_seats",
+      label: "Number of seats",
       required: true
     },
+    {
+      key: "engine",
+      type: "object",
+      isId: false,
+      label: "Engine",
+      required: true,
+      child: [
+        {
+          key: "fuel_type",
+          type: "string",
+          isId: false,
+          label: "Fuel type",
+          required: true
+        },
+        {
+          key: "transmission",
+          type: "string",
+          isId: false,
+          label: "Transmission",
+          required: true
+        },
+        {
+          key: "cubic_capacity",
+          type: "string",
+          isId: false,
+          label: "Cubic capacity",
+          required: true
+        }
+      ]
+    },
+
     {
       key: "image",
       type: "image",
       isId: false,
-      label: "image",
+      label: "Image",
       required: true
     },
     {
@@ -110,20 +141,18 @@ export class CarDetailComponent implements OnInit {
   }
 
   createCar(car: Car) {
-    // car.id = 0;
-    // this.errorMessage = null;
-    // this.appDataService.createCar(car).subscribe(
-    //   c => this.router.navigate(['/authenticated/car-maint']),
-    //   error => this.errorMessage ='Error creating car'
-    // );
+    car.id = 0;
+    this.errorMessage = null;
+    this.appDataService.createCar(car).subscribe(
+      c => this.router.navigate(["/authenticated/car-maint"]),
+      error => (this.errorMessage = "Error creating car")
+    );
   }
   updateCar(car: Car) {
-    // this.errorMessage = null;
-    // this.appDataService.updateCar(car).subscribe(
-    //   c => this.router.navigate(['/authenticated/car-maint']),
-    //   error => this.errorMessage ='Error updating car'
-    // );
-
+    this.errorMessage = null;
+    this.appDataService.updateCar(car).subscribe(
+      c => this.router.navigate(["/authenticated/car-maint"]),
+      error => (this.errorMessage = "Error updating car")
+    );
   }
-
 }

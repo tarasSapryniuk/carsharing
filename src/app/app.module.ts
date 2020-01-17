@@ -35,7 +35,7 @@ import { BarChartComponent } from './routes/car-maint/bar-chart/bar-chart.compon
     CarCarouselComponent,
     BarChartComponent,
     CarListComponent,
-    AuthenticatedComponent
+    AuthenticatedComponent,
   ],
   imports: [BrowserModule, SpaModule, AppRoutingModule, CdkTableModule, AngularMaterialModule, ChartsModule],
   providers: [

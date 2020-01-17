@@ -19,11 +19,19 @@ import {
   MatChipsModule,
   MatTooltipModule,
   MatTableModule,
+  MatTabsModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSortModule
 } from "@angular/material";
-import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { MatCarouselModule } from "@ngmodule/material-carousel";
+import {
+  MaterialFileInputModule,
+  NGX_MAT_FILE_INPUT_CONFIG
+} from "ngx-material-file-input";
+import { MatFileUploadModule } from "angular-material-fileupload";
+
+import { config } from "process";
 @NgModule({
   imports: [
     CommonModule,
@@ -45,10 +53,13 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     MatChipsModule,
     MatTooltipModule,
     MatTableModule,
+    MatTabsModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
-    MatCarouselModule
+    MatCarouselModule,
+    MaterialFileInputModule,
+    MatFileUploadModule
   ],
   exports: [
     MatCheckboxModule,
@@ -69,11 +80,17 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
     MatChipsModule,
     MatTooltipModule,
     MatTableModule,
+    MatTabsModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSortModule,
-    MatCarouselModule
+    MatCarouselModule,
+    MaterialFileInputModule,
+    MatFileUploadModule
   ],
-  providers: [MatDatepickerModule]
+  providers: [
+    MatDatepickerModule,
+    { provide: NGX_MAT_FILE_INPUT_CONFIG, useValue: config }
+  ]
 })
 export class AngularMaterialModule {}

@@ -25,16 +25,81 @@
         />
       </mat-form-field>
     </div>
-    <div *ngSwitchCase="'image'">
-      <div class="imagePreview" *ngIf="imageURL || form.value.image">
-        <img class="image" [src]="imageURL && imageURL !== '' ? imageURL : form.value.image" />
+    <div *ngSwitchCase="'amount'">
+      <mat-form-field>
+        <input
+          matInput
+          autocomplete="off"
+          [formControlName]="field.key"
+          [id]="field.key"
+          [readonly]="operation === 'details' || field.isId"
+          type="number"
+          [placeholder]="field.label"
+        />
+        <span matSuffix>$&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div *ngSwitchCase="'object'">
+      <div *ngFor="let f of field.child">
+        <spa-dynamic-field
+          [field]="f"
+          [form]="form"
+          [operation]="operation"
+          [submitted]="submitted"
+        ></spa-dynamic-field>
       </div>
-      <input
-      type="file"
-      accept="image/*"
-      [readonly]="operation === 'details' || field.isId"
-      (change)="showPreview($event)"
-    />
+    </div>
+    <div *ngSwitchCase="'image'">
+      <div *ngIf="imageURL || lightboxService.album[0].thumb">
+        <mat-form-field *ngIf="operation != 'details'" appearance="outline">
+          <ngx-mat-file-input
+            accept="image/*"
+            [formControlName]="field.key"
+            (change)="showPreview($event)"
+          >
+          </ngx-mat-file-input>
+          <div class="imagePreview">
+            <img
+              class="image"
+              [src]="
+                imageURL && ! lightboxService.album[0].thumb !== ''
+                  ? imageURL
+                  : lightboxService.album[0].thumb
+              "
+            />
+          </div>
+        </mat-form-field>
+
+        <!-- Node JS -->
+        <!-- <mat-file-upload-queue #fileUploadQueue
+            [fileAlias]="'file'"
+            [httpUrl]="'http://localhost:4200/assets/car'">
+            >
+            <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload> -->
+        <!-- </mat-file-upload-queue> -->
+        <div *ngIf="operation === 'details'">
+          <input
+            matInput
+            autocomplete="off"
+            [formControlName]="field.key"
+            [id]="field.key"
+            [readonly]="operation === 'details' || field.isId"
+            type="number"
+            [ngStyle]="{ display: none }"
+          />
+          <div class="imagePreview">
+            <img
+              class="image"
+              [src]="
+                imageURL && !_album[0].thumb !== ''
+                  ? imageURL
+                  : lightboxService.album[0].thumb
+              "
+              (click)="lightboxService.open(0)"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div

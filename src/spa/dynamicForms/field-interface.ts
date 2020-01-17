@@ -4,4 +4,5 @@ export interface FieldInput {
     isId: boolean;
     label: string;
     required: boolean;
+    child?: Array<FieldInput>;
 }

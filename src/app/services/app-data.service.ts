@@ -2,11 +2,11 @@ import { Injectable } from "@angular/core";
 import { UserService } from "./user.service";
 import { Car } from "./car-interface";
 import { Observable, of, throwError } from "rxjs";
-import { delay, catchError, map } from "rxjs/operators";
+import { delay, catchError, map, take, tap } from "rxjs/operators";
 
 @Injectable()
 export class AppDataService {
-  private CarsColection: Array<Car> = [
+  private CarsCollection: Array<Car> = [
     {
       id: 1,
       name: "Toyota",
@@ -23,7 +23,7 @@ export class AppDataService {
       image: "assets/cars/camry2010.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 20 
+      orders: 20
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ export class AppDataService {
       image: "assets/cars/accord-coupe2010.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 9 
+      orders: 9
     },
     {
       id: 3,
@@ -60,7 +60,7 @@ export class AppDataService {
       image: "assets/cars/AudiA62010.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 11 
+      orders: 11
     },
     {
       id: 4,
@@ -79,7 +79,7 @@ export class AppDataService {
       image: "assets/cars/bmw535i2010.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 13 
+      orders: 13
     },
     {
       id: 5,
@@ -97,7 +97,7 @@ export class AppDataService {
       image: "assets/cars/mercw2112009.png",
       location: "Lviv, Ukraine",
       ext_color: "silver",
-      orders: 10 
+      orders: 10
     },
     {
       id: 6,
@@ -115,7 +115,7 @@ export class AppDataService {
       image: "assets/cars/touareg2013.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 6 
+      orders: 6
     },
     {
       id: 7,
@@ -134,7 +134,7 @@ export class AppDataService {
       image: "assets/cars/tesla2015.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 18 
+      orders: 18
     },
     {
       id: 8,
@@ -153,7 +153,7 @@ export class AppDataService {
       image: "assets/cars/infinitig37.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 4 
+      orders: 4
     },
     {
       id: 9,
@@ -172,7 +172,7 @@ export class AppDataService {
       image: "assets/cars/grandeur2009.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 6 
+      orders: 6
     },
     {
       id: 10,
@@ -191,7 +191,7 @@ export class AppDataService {
       image: "assets/cars/gt-r35.png",
       location: "Kyiv, Ukraine",
       ext_color: "White Mettalic",
-      orders: 1 
+      orders: 1
     },
     {
       id: 11,
@@ -210,7 +210,7 @@ export class AppDataService {
       image: "assets/cars/370z.png",
       location: "Kyiv, Ukraine",
       ext_color: "White Mettalic",
-      orders: 2 
+      orders: 2
     },
     {
       id: 12,
@@ -229,7 +229,7 @@ export class AppDataService {
       image: "assets/cars/leaf.png",
       location: "Lviv, Ukraine",
       ext_color: "White Mettalic",
-      orders: 15 
+      orders: 15
     },
     {
       id: 13,
@@ -248,7 +248,7 @@ export class AppDataService {
       image: "assets/cars/passatb8.png",
       location: "Lviv, Ukraine",
       ext_color: "Milano Red",
-      orders: 9 
+      orders: 9
     },
     {
       id: 14,
@@ -267,7 +267,7 @@ export class AppDataService {
       image: "assets/cars/golf-IV.png",
       location: "Lviv, Ukraine",
       ext_color: "Red",
-      orders: 16 
+      orders: 16
     },
     {
       id: 15,
@@ -286,7 +286,7 @@ export class AppDataService {
       image: "assets/cars/Audi-A42010.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 6 
+      orders: 6
     },
     {
       id: 16,
@@ -305,29 +305,43 @@ export class AppDataService {
       image: "assets/cars/trafic.png",
       location: "Lviv, Ukraine",
       ext_color: "Silver",
-      orders: 5 
+      orders: 5
     }
   ];
 
   constructor(private userService: UserService) {}
-
   getCars(): Observable<Car[]> {
-    return of(this.CarsColection);
+    return of(this.CarsCollection);
   }
-
   getCar(id: number): Observable<Car> {
-    const car = this.CarsColection.find(item => item.id === id);
+    const car = this.CarsCollection.find(item => item.id === id);
     return of(car);
   }
-  deleteCar(id: number): Observable<any> {
+  deleteCar(id: number): Observable<Car[]> {
     return of({}).pipe(
       delay(2000),
-      map(() =>
-        this.CarsColection.splice(
-          this.CarsColection.findIndex(item => item.id === id),
+      map(() => {
+        return this.CarsCollection.splice(
+          this.CarsCollection.findIndex(item => item.id === id),
           1
-        ) 
-      )
+        );
+      })
     );
+  }
+  createCar(newCar: Car): Observable<any> {
+    let id = 0;
+    this.CarsCollection.forEach(item => {
+      if (item.id >= id) {
+        id = item.id + 1;
+      }
+    });
+    newCar.id = id;
+    this.CarsCollection.push(newCar);
+    return of(newCar);
+  }
+  updateCar(CarForUpdating: Car): Observable<any> {
+    const car = this.CarsCollection.find(item => item.id === CarForUpdating.id);
+    Object.assign(car, CarForUpdating);
+    return of(car).pipe(delay(1200));
   }
 }

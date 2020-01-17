@@ -29,9 +29,9 @@ export class AppComponent {
     const config: SpaConfigSettings = {
       socialIcons: [
         { name: "facebook", alt: "Facebook", url: "https://facebook.com/" },
-        { name: "instagram", alt: "Instagram", url: "https://facebook.com/" },
-        { name: "snapchat", alt: "Snapchat", url: "https://facebook.com/" },
-        { name: "whatsapp", alt: "WhatsApp", url: "https://facebook.com/" }
+        { name: "instagram", alt: "Instagram", url: "https://www.instagram.com/" },
+        { name: "snapchat", alt: "Snapchat", url: "https://www.snapchat.com/" },
+        { name: "whatsapp", alt: "WhatsApp", url: "https://www.whatsapp.com/" }
       ],
       showUserControl: true
     };

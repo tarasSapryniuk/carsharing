@@ -27,7 +27,19 @@ import { BodyComponent } from "./body/body.component";
 import { SidebarMenuComponent } from "./menus/sidebar-menu/sidebar-menu.component";
 import { DynamicFieldComponent } from "./dynamicForms/dynamic-field/dynamic-field.component";
 import { DynamicFormComponent } from "./dynamicForms/dynamic-form/dynamic-form.component";
-import { NavProfileComponent } from './header/nav-profile/nav-profile.component';
+import { NavProfileComponent } from "./header/nav-profile/nav-profile.component";
+// for HttpClient import:
+import { LoadingBarHttpClientModule } from "@ngx-loading-bar/http-client";
+
+// for Router import:
+import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
+
+// for Core import:
+import { LoadingBarModule } from "@ngx-loading-bar/core";
+import { BackToTopComponent } from './body/back-to-top/back-to-top.component';
+import { LightboxModule } from 'ngx-lightbox';
+import { LightboxService } from './services/lightbox.service';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [
@@ -46,7 +58,8 @@ import { NavProfileComponent } from './header/nav-profile/nav-profile.component'
     ScreenLargeDirective,
     DynamicFieldComponent,
     DynamicFormComponent,
-    NavProfileComponent
+    NavProfileComponent,
+    BackToTopComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +70,12 @@ import { NavProfileComponent } from './header/nav-profile/nav-profile.component'
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
+    LoadingBarModule,
+    LightboxModule,
+    RatingModule
   ],
   exports: [
     BodyComponent,
@@ -65,14 +83,16 @@ import { NavProfileComponent } from './header/nav-profile/nav-profile.component'
     DynamicFormComponent,
     FlexLayoutModule,
     ScreenSmallDirective,
-    ScreenLargeDirective
+    ScreenLargeDirective,
+    LightboxModule
   ],
   providers: [
     SpaConfigService,
     ScreenService,
     MenuService,
     NavService,
-    AlertService
+    AlertService,
+    LightboxService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

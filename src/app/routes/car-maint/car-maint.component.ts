@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges } from "@angular/core";
 import { Car } from "../../services/car-interface";
 import { Router } from "@angular/router";
 import { AppDataService } from "src/app/services/app-data.service";
@@ -31,6 +31,7 @@ import { SelectionModel } from "@angular/cdk/collections";
   ]
 })
 export class CarMaintComponent implements OnInit {
+  
   carList: Array<Car>;
   deleteError: string;
   deleteId: number;
@@ -67,9 +68,11 @@ export class CarMaintComponent implements OnInit {
     private spaConfigService: SpaConfigService,
     private screenService: ScreenService
   ) {
-    appDataService.getCars().subscribe(data => (this.carList = data));
+    appDataService.getCars().subscribe(data => {
+      this.carList = data;
+      this.dataSource = new MatTableDataSource(this.carList);
+    });
 
-    this.dataSource = new MatTableDataSource(this.carList);
     this.icons.forEach(icon => this.spaConfigService.addSvgIcon(icon));
   }
 
@@ -130,13 +133,8 @@ export class CarMaintComponent implements OnInit {
     this.appDataService.deleteCar(id).subscribe(
       car => {
         this.cancelDelete();
-        this.router
-          .navigateByUrl("/authenticated", {
-            skipLocationChange: true
-          })
-          .then(() => {
-            this.router.navigate(["/authenticated/car-maint"]);
-          });
+        this.dataSource._updateChangeSubscription();
+        this.carList = this.dataSource.data;
       },
       error => {
         this.deleteError = error;

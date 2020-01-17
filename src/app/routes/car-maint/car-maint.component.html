@@ -210,6 +210,8 @@
               >
                 Delete
               </button>
+              Delete this car?
+              <p *ngIf="deleteError">{{ deleteError }}</p>
             </div>
             <div
               *ngIf="element.id === deleteId && isDeleting"
@@ -255,4 +257,4 @@
   </mat-toolbar>
 </div>
 
-<app-bar-chart [data]="carList"></app-bar-chart>
+<app-bar-chart></app-bar-chart>
