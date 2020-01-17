@@ -1,19 +1,27 @@
-<mat-toolbar [ngClass]="!menuService.isVertical && screenService.isLarge() ?'container':'container-fluid'">
+<mat-toolbar
+  [ngClass]="
+    !menuService.isVertical && screenService.isLarge()
+      ? 'container'
+      : 'container-fluid'
+  "
+>
   <mat-toolbar-row *screenLarge>
-    <mat-icon
-      class="example-icon"
-      aria-hidden="false"
-      aria-label="Example heart icon"
-      >favorite</mat-icon
-    >
-    <span>Car Sharing</span>
+    <a mat-button routerLink="/authenticated/home" routerLinkActive="active">
+      <mat-icon
+        class="example-icon"
+        aria-hidden="false"
+        aria-label="Example heart icon"
+        >favorite</mat-icon
+      >
+      <span>Car Sharing</span>
+    </a>
     <spa-menu *ngIf="!menuService.isVertical"></spa-menu>
     <span class="example-spacer"> </span>
     <spa-nav-profile></spa-nav-profile>
   </mat-toolbar-row>
 
   <mat-toolbar-row *screenSmall>
-    <button mat-icon-button (click)="navService.openNav(); ">
+    <button mat-icon-button (click)="navService.openNav()">
       <mat-icon>menu</mat-icon>
     </button>
 

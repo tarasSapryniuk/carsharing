@@ -1,6 +1,6 @@
 :host {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
     flex-grow: 1;
 }
